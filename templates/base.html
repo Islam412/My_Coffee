@@ -61,7 +61,7 @@
               </li>
 
               <li
-              {% if 'product' in request.path %}
+              {% if 'product' in request.path or 'search' in request.path %}
                 class="nav-item dropdown active">
               {% else %}
                 class="nav-item dropdown">
