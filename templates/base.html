@@ -23,11 +23,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
-              <li class="nav-item active">
+              <li 
+              {% if '/' == request.path %}
+                class="nav-item active"
+              {% else %}
+                class="nav-item"
+              {% endif %}
+              >
                   <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item dropdown">
+              <li
+              {% if 'signin' in request.path or 'signup' in request.path or 'profile' in request.path %}
+                class="nav-item dropdown active">
+              {% else %}
+                class="nav-item dropdown">
+              {% endif %}
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Join us
                 </a>
@@ -39,11 +50,23 @@
                 </div>
               </li>
 
-              <li class="nav-item" id="coffee-nav-item">
+              <li
+              {% if 'coffee' in request.path %}
+                class="nav-item active"
+              {% else %}
+                class="nav-item"
+              {% endif %}
+               id="coffee-nav-item">
                   <a class="nav-link" href="{% url 'coffee' %}">Coffee</a>
               </li>
 
-              <li class="nav-item dropdown">
+              <li
+              {% if 'product' in request.path %}
+                class="nav-item dropdown active">
+              {% else %}
+                class="nav-item dropdown">
+              {% endif %}
+
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Products
                 </a>
@@ -58,7 +81,13 @@
                 </div>
               </li>
 
-              <li class="nav-item">
+              <li
+              {% if 'about' in request.path %}
+                class="nav-item active">
+              {% else %}
+                class="nav-item">
+              {% endif %}
+
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
 
