@@ -7,7 +7,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=20000)
     price = models.DecimalField(max_digits=6 , decimal_places=2)
-    photo = models.ImageField('photos/%y%m%d')
+    image = models.ImageField('photos/%y%m%d')
     is_active = models.BooleanField(default=True)
     publish_date = models.DateTimeField(default=datetime.now)
 

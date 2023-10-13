@@ -5,83 +5,24 @@
         <form>
             <h2 class="text-center">All Products</h2>
             <hr>
-
             <section>
                 <div class="container-fluid">
                 <div class="row p-5" >
-        
-                    <div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <img src="img/pro1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Product</h5>
-                        <p class="card-text">Product's content.</p>
-                        <a href="#" class="btn btn-warning">Show Details</a>
+                    {% for item in products %}
+                        <div>
+                        <div class="card m-2" style="width: 18rem;">
+                            <img src="{{item.image.url}}" class="card-img-top" style="width:286.4px ; height:286.4px" alt="{{item.name}}">
+                            <div class="card-body">
+                            <h5 class="card-title">{{item}}</h5>
+                            <p class="card-text text-truncate">{{item.description}}.</p>
+                            <a href="#" class="btn btn-warning">Show Details</a>
+                            </div>
                         </div>
-                    </div>
-                    </div>
-        
-                    <div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <img src="img/pro2.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Product</h5>
-                        <p class="card-text">Product's content.</p>
-                        <a href="#" class="btn btn-warning">Show Details</a>
                         </div>
-                    </div>
-                    </div>
-        
-                    <div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <img src="img/pro3.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Product</h5>
-                        <p class="card-text">Product's content.</p>
-                        <a href="#" class="btn btn-warning">Show Details</a>
-                        </div>
-                    </div>
-                    </div>
-        
-                    <div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <img src="img/pro4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Product</h5>
-                        <p class="card-text">Product's content.</p>
-                        <a href="#" class="btn btn-warning">Show Details</a>
-                        </div>
-                    </div>
-                    </div>
-            
-                    <div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <img src="img/pro5.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Product</h5>
-                        <p class="card-text">Product's content.</p>
-                        <a href="#" class="btn btn-warning">Show Details</a>
-                        </div>
-                    </div>
-                    </div>
-        
-                    <div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <img src="img/pro6.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Product</h5>
-                        <p class="card-text">Product's content.</p>
-                        <a href="#" class="btn btn-warning">Show Details</a>
-                        </div>
-                    </div>
-                    </div>
-        
+                    {% endfor %}
                 </div>
                 </div>
             </section>
-        
-
         </form>
-
     </div>
 {% endblock body %}
