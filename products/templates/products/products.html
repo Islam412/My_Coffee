@@ -15,7 +15,7 @@
                             <div class="card-body">
                             <h5 class="card-title">{{item}}</h5>
                             <p class="card-text text-truncate">{{item.description}}.</p>
-                            <a href="#" class="btn btn-warning">Show Details</a>
+                            <a href="{% url 'product' product_id=item.id %}" class="btn btn-warning">Show Details</a>
                             </div>
                         </div>
                         </div>
