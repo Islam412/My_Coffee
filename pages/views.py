@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from products.models import Product
 
 def index(request):
-    return render(request , 'pages/index.html')
+    items = {
+        'products' : Product.objects.all()
+    }
+    return render(request , 'pages/index.html',items)
 
 
 def about(request):

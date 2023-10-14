@@ -5,23 +5,21 @@
         <form>
             <h2 class="text-center">Product Details</h2>
             <hr>
-
             <section>
                 
                 <div class="row p-5 " >
-
                     <div class="card mb-3 w-100" >
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                        <img src="img/pro1.jpg" class="card-img" alt="...">
+                        <img src="{{product.image.url}}" class="card-img" alt="product">
                         </div>
                         <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title" id="productName">Product Name</h5>
+                            <h5 class="card-title" id="productName">{{product.name}}</h5>
                             <hr>
-                            <p class="card-text" id="description">Description</p>
+                            <p class="card-text" id="description">{{product.description}}</p>
                             <hr>
-                            <p class="card-text">Current Price: <span id="price" class="bg-dark text-light rounded-circle p-2">$10</span></p>
+                            <p class="card-text">Current Price: <span id="price" class="bg-dark text-light rounded-circle p-2">${{product.price}}</span></p>
                             <hr>
                             <button type="submit" class="btn btn-warning">Add To Cart</button>
                             <button type="submit" class="btn btn-warning text-white">
@@ -33,13 +31,8 @@
                         </div>
                     </div>
                     </div>
-
                 </div>
-                
             </section>
-        
-
         </form>
-
     </div>
 {% endblock body %}
