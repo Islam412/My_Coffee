@@ -2,13 +2,13 @@
 {% load static %}
 {% block body %}
     <div class="my-form container p-5 my-5 rounded border border-warning">
-        <form>
+        <form action="{% url 'products' %}">
             <h2 class="text-center">Advanced Search</h2>
             <hr>
 
             <div class="form-group">
                 <label for="inputSearchProductName">Product Name Contains</label>
-                <input type="text" class="form-control" name="Searchname " id="inputSearchProductName" placeholder="espresso">
+                <input type="text" class="form-control" name="Searchname" id="inputSearchProductName" placeholder="espresso">
             </div>
             
             <div class="form-group">
