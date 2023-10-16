@@ -13,7 +13,12 @@ def products(request):
         desc = request.GET['Searchdescription']
         if desc:
             product = product.filter(description__icontains=desc)
-
+    
+    if 'Searchpricefrom' in request.GET and 'Searchpriceto' in request.GET:
+        price_from = request.GET['Searchpricefrom']
+        price_to = request.GET['Searchpriceto']
+        if price_from.isdigit() and price_to.isdigit():
+            product = product.filter(price__gte=price_from,price__lte=price_to)  # get----> >= , lte----> <=
 
     items = {
         'products':product
