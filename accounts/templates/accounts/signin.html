@@ -7,9 +7,11 @@
             <hr>
             {% if messages %}
                 {% for msg in messages %}
-                    <div style="border: 2px; solid #000; margin: 10px;">
-                        {{msg}}
-                    </div>
+                  <div class="alert alert-{{msg.taggs}} alert-dismissible fade show" role="alert">
+                    <strong>{{msg.tags|title}}: </strong>
+                     {{msg}}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
                 {% endfor %}
             {% endif %}
             <div class="form-group">
