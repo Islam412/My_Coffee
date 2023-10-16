@@ -1,0 +1,28 @@
+#header{
+    background: #7A232D;
+    color:#FFFFFF ;
+}
+
+#head{
+    color:bisque !important ;
+}
+
+.module h2, 
+.module caption, 
+.inline-group h2{
+    background: #a02533 !important;
+    color:#FFFFFF ;
+
+}
+
+div.breadcrumbs{
+    background: #a02533 !important;
+    color:#FFFFFF ;
+
+}
+
+.selector-chosen h2{
+    background: #a02533 !important;
+    color:#FFFFFF ;
+
+}
