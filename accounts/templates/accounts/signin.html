@@ -5,7 +5,13 @@
         <form>
             <h2 class="text-center">Sign In</h2>
             <hr>
-
+            {% if messages %}
+                {% for msg in messages %}
+                    <div style="border: 2px; solid #000; margin: 10px;">
+                        {{msg}}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <div class="form-group">
                 <label for="inputUsername">Username</label>
                 <input type="text" class="form-control" name="user" id="inputUsername" placeholder="" required>

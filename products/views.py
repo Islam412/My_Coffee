@@ -35,7 +35,6 @@ def products(request):
     return render(request, 'products/products.html', items)
 
 
- 
 def product(request,product_id):
     item = {
         'product':get_object_or_404(Product,pk=product_id)
