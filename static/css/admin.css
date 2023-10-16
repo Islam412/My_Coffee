@@ -26,3 +26,41 @@ div.breadcrumbs{
     color:#FFFFFF ;
 
 }
+
+.button,
+input[type=submit],
+input[type=button],
+.button,
+input[type=submit],
+input[type=button],
+.button,
+input[type=submit],
+input[type=button],
+.button.default,
+input[type=submit].default,
+.button.default,
+input[type=submit].default,
+.button.default,
+input[type=submit].default{
+    background: #a02533 !important;
+    color:#FFFFFF ;
+}
+
+.button:active,
+input[type=submit]:active,
+input[type=button]:active,
+.button:focus,
+input[type=submit]:focus,
+input[type=button]:focus,
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.button.default:active,
+input[type=submit].default:active,
+.button.default:focus,
+input[type=submit].default:focus,
+.button.default:hover,
+input[type=submit].default:hover{
+    background: #b33846 !important;
+    color:#FFFFFF ;
+}
