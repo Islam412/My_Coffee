@@ -2,7 +2,8 @@
 {% load static %}
 {% block body %}
     <div class="my-form container p-5 my-5 rounded border border-warning">
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <h2 class="text-center">Profile</h2>
             <hr>
             {% include "accounts/_alerts.html" %}
@@ -52,7 +53,7 @@
                     <input type="password" class="form-control" name="password" id="inputPassword" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning">Save Changes</button>
+            <button type="submit" name="btnsave" class="btn btn-warning">Save Changes</button>
         </form>
     </div>
 {% endblock body %}

@@ -2,7 +2,8 @@
 {% load static %}
 {% block body %}
     <div class="my-form container p-5 my-5 rounded border border-warning">
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <h2 class="text-center">Sign Up</h2>
             <hr>
             {% include "accounts/_alerts.html" %}
@@ -64,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning">Sign Up</button>
+            <button type="submit" name="btnsignup" class="btn btn-warning">Sign Up</button>
         </form>
     </div>
 {% endblock body %}
