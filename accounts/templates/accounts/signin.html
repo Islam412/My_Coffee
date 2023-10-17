@@ -5,21 +5,7 @@
         <form>
             <h2 class="text-center">Sign In</h2>
             <hr>
-            {% if messages %}
-                {% for msg in messages %}
-                  <div class="alert alert-{{msg.taggs}} alert-dismissible fade show" role="alert">
-                    <strong>
-                        {% if 'danger' == msg.tags %}
-                            Error
-                        {% else %}
-                            {{msg.tags|title}}:
-                        {% endif %}
-                    </strong>
-                     {{msg}}.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                {% endfor %}
-            {% endif %}
+            {% include "accounts/_alerts.html" %}
             <div class="form-group">
                 <label for="inputUsername">Username</label>
                 <input type="text" class="form-control" name="user" id="inputUsername" placeholder="" required>
