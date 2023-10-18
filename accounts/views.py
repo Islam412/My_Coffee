@@ -31,17 +31,28 @@ def signup(request):
         
         #GET value from form
         if 'fname' in request.POST: frist_name = request.POST['fname']
+        else: messages.error(request,'Error in frist name')
         if 'lname' in request.POST: last_name = request.POST['lname']
+        else: messages.error(request,'Error in last name')
         if 'address' in request.POST: address = request.POST['address']
+        else: messages.error(request,'Error in  address')
         if 'address2' in request.POST: address2 = request.POST['address2']
+        else: messages.error(request,'Error in  address 2')
         if 'city' in request.POST: city = request.POST['city']
+        else: messages.error(request,'Error in  city')
         if 'state' in request.POST: state = request.POST['state']
+        else: messages.error(request,'Error in  state')
         if 'zip' in request.POST: zip_number = request.POST['zip']
+        else: messages.error(request,'Error in  zip number')
         if 'email' in request.POST: email = request.POST['email']
+        else: messages.error(request,'Error in  email')
         if 'user' in request.POST: username = request.POST['user']
+        else: messages.error(request,'Error in  user name')
         if 'password' in request.POST: password = request.POST['password']
+        else: messages.error(request,'Error in  password')
         if 'terms' in request.POST: terms = request.POST['terms']
-
+        
+        #check all values
         return redirect('signup')
     else:
         return render(request , 'accounts/signup.html')
