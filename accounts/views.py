@@ -53,6 +53,10 @@ def signup(request):
         if 'terms' in request.POST: terms = request.POST['terms']
         
         #check all values
+        if frist_name and last_name and address and address2 and city and state and zip_number and email and username and password and terms:
+            pass
+        else:
+            messages.error(request,'check empty fields')
         return redirect('signup')
     else:
         return render(request , 'accounts/signup.html')
