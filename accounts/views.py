@@ -17,8 +17,8 @@ def signin(request):
 def signup(request):
     if request.method == 'POST' and 'btnsignup' in request.POST:
         #variables for fieles
-        frist_name = None
-        last_name = None
+        fname = None
+        lname = None
         address = None
         address2 = None
         city = None
@@ -30,9 +30,9 @@ def signup(request):
         terms = None
         
         #GET value from form
-        if 'fname' in request.POST: frist_name = request.POST['fname']
+        if 'fname' in request.POST: fname = request.POST['fname']
         else: messages.error(request,'Error in frist name')
-        if 'lname' in request.POST: last_name = request.POST['lname']
+        if 'lname' in request.POST: lname = request.POST['lname']
         else: messages.error(request,'Error in last name')
         if 'address' in request.POST: address = request.POST['address']
         else: messages.error(request,'Error in  address')
@@ -53,7 +53,7 @@ def signup(request):
         if 'terms' in request.POST: terms = request.POST['terms']
         
         #check all values
-        if frist_name and last_name and address and address2 and city and state and zip_number and email and username and password:
+        if fname and lname and address and address2 and city and state and zip_number and email and username and password:
             if terms == 'on':
                 #check if username
                 if User.objects.filter(username=username).exists():
@@ -65,7 +65,14 @@ def signup(request):
                     else:
                         patt = "^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
                         if re.match(patt,email):
-                            pass
+                            # add User
+                            user = User.objects.create_user(first_name=fname,last_name=lname,email=email,username=username,password=password) #حقل ديجانجو = متغير الخاص بي
+                            user.save()
+                            # add user profile
+                            userprofile = UserProfile(user=user,address=address,address2=address2,city=city,state=state,zip_number=zip_number)
+                            userprofile.save()
+                            #Success message
+                            messages.success(request,'Youer account is crated')
                         else:
                             messages.error(request,'Invalid e-mail')
             else:
