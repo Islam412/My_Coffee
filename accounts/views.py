@@ -71,6 +71,18 @@ def signup(request):
                             # add user profile
                             userprofile = UserProfile(user=user,address=address,address2=address2,city=city,state=state,zip_number=zip_number)
                             userprofile.save()
+                            #clear fields
+                            first_name = ''
+                            last_name = ''
+                            address = ''
+                            address2 = ''
+                            city = ''
+                            state = ''
+                            zip_number = ''
+                            email = ''
+                            username = ''
+                            password = ''
+                            terms = None
                             #Success message
                             messages.success(request,'Your account has been created successfully')
                         else:
