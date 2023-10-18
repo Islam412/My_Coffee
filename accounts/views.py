@@ -28,6 +28,7 @@ def signup(request):
         username = None
         password = None
         terms = None
+        is_added = None
         
         #GET value from form
         if 'first_name' in request.POST: first_name = request.POST['first_name']
@@ -85,6 +86,7 @@ def signup(request):
                             terms = None
                             #Success message
                             messages.success(request,'Your account has been created successfully')
+                            is_added = True
                         else:
                             messages.error(request,'Invalid e-mail')
             else:
@@ -102,6 +104,7 @@ def signup(request):
                 'email': email,
                 'user': username,
                 'password': password,
+                'is_added': is_added,
         })
     else:
         return render(request , 'accounts/signup.html')

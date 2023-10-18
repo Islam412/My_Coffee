@@ -2,11 +2,15 @@
 {% load static %}
 {% block body %}
     <div class="my-form container p-5 my-5 rounded border border-warning">
+        <h2 class="text-center">Sign Up</h2>
+        <hr>
+        {% include "accounts/_alerts.html" %}
+        {% if is_added == True %}
+        <form method="POST" style="display: none;">
+        {% else %}
         <form method="POST">
+        {% endif %}
             {% csrf_token %}
-            <h2 class="text-center">Sign Up</h2>
-            <hr>
-            {% include "accounts/_alerts.html" %}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputFirstName">First Name</label>
