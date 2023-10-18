@@ -59,7 +59,15 @@ def signup(request):
                 if User.objects.filter(username=username).exists():
                     messages.error(request,'User name is taken')
                 else:
-                    pass
+                    #check email is taken
+                    if User.objects.filter(email=email).exists():
+                        messages.error(request,'E-Mail is taken')
+                    else:
+                        patt = "^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
+                        if re.match(patt,email):
+                            pass
+                        else:
+                            messages.error(request,'Invalid e-mail')
             else:
                 message.error(request,'You must agree to the terms')
         else:
