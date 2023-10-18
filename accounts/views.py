@@ -53,8 +53,15 @@ def signup(request):
         if 'terms' in request.POST: terms = request.POST['terms']
         
         #check all values
-        if frist_name and last_name and address and address2 and city and state and zip_number and email and username and password and terms:
-            pass
+        if frist_name and last_name and address and address2 and city and state and zip_number and email and username and password:
+            if terms == 'on':
+                #check if username
+                if User.objects.filter(username=username).exists():
+                    messages.error(request,'User name is taken')
+                else:
+                    pass
+            else:
+                message.error(request,'You must agree to the terms')
         else:
             messages.error(request,'check empty fields')
         return redirect('signup')
