@@ -13,6 +13,8 @@ def signin(request):
         password = request.POST['password']
         user = auth.authenticate(username=username,password=password)
         if user is not None:
+            if 'rememberme' not in request.POST:
+                request.session.set_expiry(0)
             auth.login(request,user)
             #messages.success(request,'You are logged in successfully')
         else:
