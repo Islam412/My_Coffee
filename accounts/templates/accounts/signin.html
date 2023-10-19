@@ -2,6 +2,11 @@
 {% load static %}
 {% block body %}
     <div class="my-form container p-5 my-5 rounded border border-warning">
+        {% if request.user.is_authenticated %}
+          <h4>
+            Welcome {{request.user.username}}
+          </h4>
+        {% endif %}
         <form method="POST">
             {% csrf_token %}
             <h2 class="text-center">Sign In</h2>
