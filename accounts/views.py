@@ -14,12 +14,18 @@ def signin(request):
         user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)
-            messages.success(request,'You are logged in successfully')
+            #messages.success(request,'You are logged in successfully')
         else:
             messages.error(request,'username and password are incorrect')
         return redirect('signin')
     else:
         return render(request , 'accounts/signin.html')
+
+
+def logout(request):
+    if request.user.is_authenticated:
+        auth.logout(request)
+    return redirect('/')
 
 
 def signup(request):

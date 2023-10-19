@@ -6,7 +6,10 @@
         <hr>
         {% if request.user.is_authenticated %}
             <h4>
-                Welcome {{request.user.username}} you are now logged in
+                Welcome {{request.user.username}} you are now logged in,
+                <a class="text-dark" href="{% url 'logout' %}">
+                    Logout
+                </a>
             </h4>
         {% else %}
             <form method="POST">
