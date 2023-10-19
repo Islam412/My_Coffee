@@ -4,7 +4,7 @@
     <div class="my-form container p-5 my-5 rounded border border-warning">
         {% if request.user.is_authenticated %}
           <h4>
-            Welcome {{request.user.username}}
+            Welcome {{request.user.username}} you are now logged in
           </h4>
         {% endif %}
         <form method="POST">
