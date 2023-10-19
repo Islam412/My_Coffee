@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib import auth
 from .models import UserProfile
 import re
 
@@ -8,7 +9,14 @@ import re
 
 def signin(request):
     if request.method == 'POST' and 'btnlogin' in request.POST:
-        messages.info(request,'This is POST and btnlogin')
+        username = request.POST['user']
+        password = request.POST['password']
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            messages.success(request,'You are logged in successfully')
+        else:
+            messages.error(request,'username and password are incorrect')
         return redirect('signin')
     else:
         return render(request , 'accounts/signin.html')
@@ -102,7 +110,7 @@ def signup(request):
                 'state': state,
                 'zip_number': zip_number,
                 'email': email,
-                'user': username,
+                'username': username,
                 'password': password,
                 'is_added': is_added,
         })
