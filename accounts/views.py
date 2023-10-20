@@ -126,9 +126,28 @@ def signup(request):
         return render(request , 'accounts/signup.html')
 
 
+from django.contrib import messages
+
 def profile(request):
     if request.method == 'POST' and 'btnsave' in request.POST:
-        
+        if request.user is not None and not request.user.is_anonymous:
+            userprofile = UserProfile.objects.get(user=request.user)
+            if all(request.POST.get(key) for key in ['first_name', 'last_name', 'address', 'address2', 'city', 'state', 'zip_number', 'email', 'username', 'password']):
+                request.user.first_name = request.POST['first_name']
+                request.user.last_name = request.POST['last_name']
+                userprofile.address = request.POST['address']
+                userprofile.address2 = request.POST['address2']
+                userprofile.city = request.POST['city']
+                userprofile.state = request.POST['state']
+                userprofile.zip_number = request.POST['zip_number']
+                # request.user.email = request.POST['email']
+                # request.user.username = request.POST['username']
+                request.user.set_password(request.POST['password'])
+                request.user.save()
+                userprofile.save()
+                messages.success(request, 'Your data has been saved')
+            else:
+                messages.error(request, 'Check your values and elements')
         return redirect('profile')
     else:
         #if request.user.is_anonymous: return redirect('/')
