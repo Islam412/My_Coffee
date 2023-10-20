@@ -142,11 +142,11 @@ def profile(request):
                 userprofile.zip_number = request.POST['zip_number']
                 # request.user.email = request.POST['email']
                 # request.user.username = request.POST['username']
-                if not request.POST['password'].startswith('pbkdf2_sha256$600000$'):
+                if not request.POST['password'].startswith('pbkdf2_sha256$600000$'):#pbkdf2_sha256$600000$<---->name of dp
                     request.user.set_password(request.POST['password'])
                 request.user.save()
                 userprofile.save()
-                auth.login(request,request.user)
+                auth.login(request,request.user)#sve login in state change data in profile
                 messages.success(request, 'Your data has been saved')
             else:
                 messages.error(request, 'Check your values and elements')

@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}
+  Search
+{% endblock title %}
 {% block body %}
     <div class="my-form container p-5 my-5 rounded border border-warning">
         <form action="{% url 'products' %}">
