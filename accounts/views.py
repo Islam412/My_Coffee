@@ -128,7 +128,31 @@ def signup(request):
 
 def profile(request):
     if request.method == 'POST' and 'btnsave' in request.POST:
-        messages.info(request,'This is POST and btnsave')
+        
         return redirect('profile')
     else:
-        return render(request,'accounts/profile.html')
+        #if request.user.is_anonymous: return redirect('/')
+        #if request.user.id == None: return redirect('/')
+        #حل لمشكلة لدخول صفحة البروفايل بطريقة غير مباشرة ولكن في ادق منوا
+        
+        if request.user is not None:
+            context = None
+            #if not request.user.is_anonymous:==if request.user.id !=None      the same of answe and the peats of enter profile in state not allow
+            if not request.user.is_anonymous:
+                userprofile = UserProfile.objects.get(user=request.user)
+                context = {
+                'first_name':request.user.first_name,
+                'last_name':request.user.last_name,
+                'address':userprofile.address,
+                'address2':userprofile.address2,
+                'city':userprofile.city,
+                'state':userprofile.state,
+                'zip_number':userprofile.zip_number,
+                'email':request.user.email,
+                'username':request.user.username,
+                'password':request.user.password,
+                }
+            return render(request,'accounts/profile.html',context)
+        else:
+            return redirect('profile')
+        

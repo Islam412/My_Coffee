@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
-    <h2 class="text-center">Profile</h2>
-    <hr>
     <div class="my-form container p-5 my-5 rounded border border-warning">
+        <h2 class="text-center">Profile</h2>
+        <hr>
         {% if request.user.is_authenticated %}
         <form method="POST">
             {% csrf_token %}
@@ -11,47 +11,47 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputFirstName">First Name</label>
-                    <input type="text" class="form-control" name="fname" id="inputFirstName" required>
+                    <input type="text" class="form-control" name="first_name" id="inputFirstName" required value="{{first_name}}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputLastName">Last Name</label>
-                    <input type="text" class="form-control" name="lname" id="inputLastName" required>
+                    <input type="text" class="form-control" name="last_name" id="inputLastName" required value="{{last_name}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" name="address" id="inputAddress" placeholder="1234 Main St" required>
+                <input type="text" class="form-control" name="address" id="inputAddress" placeholder="1234 Main St" required value="{{address}}">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control" name="address2" id="inputAddress2" placeholder="Apartment, studio, or floor" required>
+                <input type="text" class="form-control" name="address2" id="inputAddress2" placeholder="Apartment, studio, or floor" required value="{{address2}}">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">City</label>
-                    <input type="text" class="form-control" name="city" id="inputCity" required>
+                    <input type="text" class="form-control" name="city" id="inputCity" required value="{{city}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputZip">State</label>
-                    <input type="text" class="form-control" name="state" id="inputZip" required>
+                    <input type="text" class="form-control" name="state" id="inputZip" required value="{{state}}">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" name="zip" id="inputZip" placeholder="11111" required>
+                    <input type="text" class="form-control" name="zip_number" id="inputZip" placeholder="11111" required value="{{zip_number}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" readonly class="form-control-plaintext border border-warning rounded" name="email" id="inputEmail" placeholder="name@example.com" required>
+                <input type="email" readonly class="form-control-plaintext border border-warning rounded" name="email" id="inputEmail" placeholder="name@example.com" required value="{{email}}">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputUsername">Username</label>
-                    <input type="text" readonly class="form-control-plaintext border border-warning rounded" name="user" id="inputUsername" placeholder="ahmed" required>
+                    <input type="text" readonly class="form-control-plaintext border border-warning rounded" name="username" id="inputUsername" placeholder="ahmed" required value="{{username}}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" name="password" id="inputPassword" required>
+                    <input type="password" class="form-control" name="password" id="inputPassword" required value="{{password}}">
                 </div>
             </div>
             <button type="submit" name="btnsave" class="btn btn-warning">Save Changes</button>
