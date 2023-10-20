@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
+    <h2 class="text-center">Profile</h2>
+    <hr>
     <div class="my-form container p-5 my-5 rounded border border-warning">
+        {% if request.user.is_authenticated %}
         <form method="POST">
             {% csrf_token %}
-            <h2 class="text-center">Profile</h2>
-            <hr>
             {% include "accounts/_alerts.html" %}
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -55,5 +56,13 @@
             </div>
             <button type="submit" name="btnsave" class="btn btn-warning">Save Changes</button>
         </form>
+        {% else %}
+        <h4 class="alert alert-danger">
+            You must be 
+            <a href="{% url 'signin' %}" class="text-dark">
+                Logged in
+            </a>
+        </h4>
+        {% endif %}
     </div>
 {% endblock body %}
