@@ -189,9 +189,9 @@ def product_favorite(request, product_id):
             user_profile = UserProfile.objects.get(user=request.user)
             user_profile.product_favorites.add(product_favorite)
             messages.success(request, 'Product has been added to favorites')
-        return redirect('/products/' + str(product_id))
     else:
-        return redirect('/')
+        messages.error(request,'You must be logged in')
+    return redirect('/products/' + str(product_id))
 
 
 
