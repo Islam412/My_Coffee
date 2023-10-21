@@ -7,4 +7,5 @@ urlpatterns = [
     path('signup',views.signup,name='signup'),
     path('profile',views.profile,name='profile'),
     path('accounts/product_favorite/<int:product_id>', views.product_favorite, name='product_favorite'),
+    path('show_favorite',views.show_favorite,name='show_favorite'),
 ]

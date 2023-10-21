@@ -194,6 +194,14 @@ def product_favorite(request, product_id):
     return redirect('/products/' + str(product_id))
 
 
+def show_favorite(request):
+    context = None
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        user_info = UserProfile.objects.get(user=request.user)
+        products = user_info.product_favorites.all()
+        context = {'products':products}
+    return render(request,'products/products.html',context)
+
 
 
 
