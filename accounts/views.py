@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import UserProfile
+from products.models import Product
 import re
 
 
@@ -177,3 +178,37 @@ def profile(request):
         else:
             return redirect('profile')
         
+
+
+def product_favorite(request, product_id):
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        product_favorite = Product.objects.get(pk=product_id)
+        if UserProfile.objects.filter(user=request.user, product_favorites=product_favorite).exists():
+            messages.success(request, 'Already added to favorites')
+        else:
+            user_profile = UserProfile.objects.get(user=request.user)
+            user_profile.product_favorites.add(product_favorite)
+            messages.success(request, 'Product has been added to favorites')
+        return redirect('/products/' + str(product_id))
+    else:
+        return redirect('/')
+
+
+# def product_favorite(request, product_id):
+#     if request.user.is_authenticated:
+#         product = get_object_or_404(Product, pk=product_id)
+#         user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+#         if product in user_profile.product_favorites.all():
+#             messages.info(request, 'Product is already in favorites.')
+#         else:
+#             user_profile.product_favorites.add(product)
+#             messages.success(request, 'Product has been favorited.')
+#     else:
+#         messages.warning(request, 'You need to be logged in to favorite a product.')
+
+#     return redirect('/products/' + str(product_id))
+
+
+
+
+
