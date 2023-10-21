@@ -194,20 +194,6 @@ def product_favorite(request, product_id):
         return redirect('/')
 
 
-# def product_favorite(request, product_id):
-#     if request.user.is_authenticated:
-#         product = get_object_or_404(Product, pk=product_id)
-#         user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-#         if product in user_profile.product_favorites.all():
-#             messages.info(request, 'Product is already in favorites.')
-#         else:
-#             user_profile.product_favorites.add(product)
-#             messages.success(request, 'Product has been favorited.')
-#     else:
-#         messages.warning(request, 'You need to be logged in to favorite a product.')
-
-#     return redirect('/products/' + str(product_id))
-
 
 
 
