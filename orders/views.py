@@ -33,4 +33,24 @@ def add_to_cart(request):
     
 
 def cart(request):
-    return render(request,'order/cart.html')
+    context = None
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        if Order.objects.filter(user=request.user, is_finished=False):
+            order = Order.objects.get(user=request.user, is_finished=False)
+            orderdetails = OrderDetails.objects.filter(order=order)
+            total = 0
+            for sub in orderdetails:
+                total += sub.price * sub.quantity
+            context = {
+                'order': order,
+                'orderdetails': orderdetails,
+                'total': total,
+            }
+    return render(request, 'orders/cart.html', context)
+
+def removecart(request,id):
+    if request.user.is_authenticated and not request.user.is_anonymous and id:
+        orderdetails = OrderDetails.objects.get(id=id)
+        orderdetails.delete()
+    return redirect('cart')
+
