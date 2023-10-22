@@ -52,7 +52,7 @@
                 {% if request.user.is_authenticated %}
                 <a class="dropdown-item" href="{% url 'profile' %}">Profile({{request.user.username}})</a>
                 <a href="{% url 'show_favorite' %}" class="dropdown-item">Wishlist</a>
-                <a href="{% url 'Cart' %}" class="dropdown-item">Cart</a>
+                <a href="{% url 'cart' %}" class="dropdown-item">Cart</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'logout' %}">
                   Logout
