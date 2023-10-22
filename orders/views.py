@@ -30,3 +30,7 @@ def add_to_cart(request):
         return redirect('/products/' + request.GET['product_id'])
     else:
         return redirect('products')
+    
+
+def cart(request):
+    return render(request,'order/cart.html')
