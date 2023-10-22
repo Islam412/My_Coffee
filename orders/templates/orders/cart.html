@@ -28,7 +28,15 @@
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{item.product.name}}</td>
                     <td><img src="{{item.product.image.url}}" style="width:80px;height:80px;" alt="product"></td>
-                    <td>{{item.quantity}}</td>
+                    <td>
+                      <a href="" class="btn btn-outline-waring btn-sm">-</a>
+                      {{item.quantity}}
+                      <a href="" class="btn btn-outline-waring btn-sm">+</a>
+                    </td>
+                    <td>
+                      
+                      <a href="" class="btn btn-outline-waring btn-sm">+</a>
+                    </td>
                     <td>{{item.price}}$</td>
                     <td style="font-weight: bold;color: darkred;">{% widthratio item.quantity 1 item.price %}$</td>
                     <td>
@@ -38,7 +46,7 @@
                   {% empty %}
                   <h5 class="alert alert-warning">
                   Product is not available,
-                  <a href="{% url 'products' id=line.id %}" class="btn btn-warning">All Products</a>
+                  <a href="{% url 'products' %}" class="btn btn-warning">All Products</a>
                 </h5>
                 {% endfor %}            
                 </tbody>
