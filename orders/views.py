@@ -54,3 +54,18 @@ def removecart(request,id):
         orderdetails.delete()
     return redirect('cart')
 
+def add_qty(request, id):
+    if request.user.is_authenticated and not request.user.is_anonymous and id:
+        orderdetails = OrderDetails.objects.get(id=id)
+        orderdetails.quantity += 1  # corrected the syntax here
+        orderdetails.save()
+    return redirect('cart')
+
+
+def sub_qty(request, id):
+    if request.user.is_authenticated and not request.user.is_anonymous and id:
+        orderdetails = OrderDetails.objects.get(id=id)
+        if orderdetails.quantity > 1:
+            orderdetails.quantity -= 1
+            orderdetails.save()
+    return redirect('cart')

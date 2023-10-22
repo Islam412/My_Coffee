@@ -23,10 +23,10 @@
             </tr>
             </thead>
                 <tbody>
-                {% for item in OrderDetails %}
+                {% for item in object.order_detail.all %}
                   <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{item.product.name}}</td>
+                    <td>{{item.product}}</td>
                     <td><img src="{{item.product.image.url}}" style="width:80px;height:80px;" alt="product"></td>
                     <td>
                       <a href="" class="btn btn-outline-waring btn-sm">-</a>
@@ -37,7 +37,7 @@
                       
                       <a href="" class="btn btn-outline-waring btn-sm">+</a>
                     </td>
-                    <td>{{item.price}}$</td>
+                    <td>{{item.product.price}}$</td>
                     <td style="font-weight: bold;color: darkred;">{% widthratio item.quantity 1 item.price %}$</td>
                     <td>
                       <a href="{% url 'removecart' %}" class="btn btn-outline-danger btn-sm">Remove</a>
