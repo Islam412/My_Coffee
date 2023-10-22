@@ -190,11 +190,22 @@
           <script src="{% static "js/jquery-3.4.1.slim.min.js" %}"></script>
           <script src="{% static "js/popper.min.js" %}"></script>
           <script src="{% static "js/bootstrap.min.js" %}"></script>
+          <script src="{% static "js/bootstrap.min.js" %}"></script>
           <script>
               $(function () {
                   $('[data-toggle="popover"]').popover()
               })
               $(".year").text( (new Date).getFullYear() );
+              if($('body').height()<600){
+                $('body').height(600);
+              }
+
+              $(document).ready(function(){
+                $("#staticBackdrop").on('shown.bs.modal', function(){
+                  $(this).find('#inputquantity').focus();
+                  $(this).find('#inputquantity').select();
+                });
+              });
           </script>
       </body>
       </html>
