@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 from products.models import Product
 
 
@@ -24,3 +25,12 @@ class OrderDetails(models.Model):
         return 'User: ' + self.order.user.username + ',Product: ' + self.product.name + 'order id: ' + str(self.order.id)
     class Meta:
         ordering = ['-id']
+
+
+class Payment(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    shipment_address = models.CharField(max_length=150)
+    shipment_phone = models.CharField(max_length=20)
+    card_number = CardNumberField()
+    expire = CardExpiryField()
+    security_code = SecurityCodeField()

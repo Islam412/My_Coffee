@@ -14,4 +14,4 @@ class Product(models.Model):
         return self.name
     
     class Meta:
-        ordering = ['-publish_date']
+        ordering = ['-publish_date']# Sort by -model name
