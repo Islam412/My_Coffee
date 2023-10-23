@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Checkout
+{% endblock title %}
+{% block body %}
+    <div class="my-form container p-5 my-5 rounded border border-warning">
+        <h2 class="text-center">Checkout</h2>
+        <hr>
+        {% include "accounts/_alerts.html" %}
+        {% if is_added == True %}
+        <form method="POST" style="display: none;">
+        {% else %}
+        <form method="POST">
+        {% endif %}
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputFirstName">Shipment Address</label>
+                    <input type="text" class="form-control" name="ship_address" id="inputship_address" required value="{{ship_address}}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputLastName">Shipment Phone</label>
+                    <input type="text" class="form-control" name="Ship_phone" id="inputShip_phone" placeholder="011111111111" required value="{{Ship_phone}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">Card Number</label>
+                    <input type="text" class="form-control" name="card_num" id="inputcard_num" placeholder="3333 3333 3333 3333" required value="{{card_num}}">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputZip">Expire</label>
+                    <input type="text" class="form-control" name="expire" id="inputexpire" placeholder="mm/yy/ss" required value="{{expire}}">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Security Code</label>
+                    <input type="text" class="form-control" name="security_code" id="inputsecurity_code" placeholder="567" required value="{{security_code}}">
+                </div>
+            </div>
+            <button type="submit" name="btnpayment" class="btn btn-warning">Payment</button>
+        </form>
+    </div>
+{% endblock body %}

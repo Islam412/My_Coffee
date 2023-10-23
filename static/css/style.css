@@ -204,3 +204,12 @@ input[type=number]:focus,
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
 }
+
+.my-num{
+  color: #71131E;
+  font-weight: bold;
+  border: 1px solid darkred;
+  padding:2px 10px;
+  border-radius: 50px;
+  background-color: blue;
+}

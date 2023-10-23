@@ -14,9 +14,14 @@ def add_to_cart(request):
             return redirect('products')
         product = Product.objects.get(id=product_id)
         if order:
-            messages.success(request,'Find old order')
+            #messages.success(request,'Find old order')
             old_order = Order.objects.get(user=request.user,is_finished=False)
-            orderdetails = OrderDetails.objects.create(product=product,order=old_order,quantity=quantity)
+            if OrderDetails.objects.all().filter(product=product,order=old_order).exists():
+                orderdetails = OrderDetails.objects.get(order=old_order,product=product)
+                orderdetails.quantity += int(quantity)
+                orderdetails.save()
+            else:
+                orderdetails = OrderDetails.objects.create(product=product,order=old_order,quantity=quantity)
             messages.success(request,'was added to cart for old orders')
         else:
             messages.success(request,'Run new order')
@@ -29,7 +34,12 @@ def add_to_cart(request):
             messages.success(request,'added to new order')
         return redirect('/products/' + request.GET['product_id'])
     else:
-        return redirect('products')
+        if 'product_id' in request.GET:
+            messages.error(request,'You must login in')
+            return redirect('/products/' + request.GET[product_id])
+        else:
+            return redirect('signin')
+
     
 
 def cart(request):
