@@ -13,6 +13,8 @@
     You must 
     <a href="{% url 'signin' %}" class="text-dark">Login In</a>
   </h5>
+{% elif not order %}
+  <h4 class="alert alert-warning">No Order</h4>
 {% else %}
 {% if is_added == True %}
 <form method="POST" style="display: none;">
