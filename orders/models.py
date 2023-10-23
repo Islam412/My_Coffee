@@ -6,7 +6,7 @@ from products.models import Product
 
 class Order(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    created_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
     details = models.ManyToManyField(Product,through='OrderDetails')
     is_finished = models.BooleanField()
 

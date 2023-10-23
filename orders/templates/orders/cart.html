@@ -29,7 +29,7 @@
                     <td>{{item.product}}</td>
                     <td><img src="{{item.product.image.url}}" style="width:80px;height:80px;" alt="product"></td>
                     <td>
-                      <a href="{% url 'sub_qty' id=item.id %}" class="btn btn-outline-waring btn-sm">-</a>
+                      <a href="{% url 'sub_qty' orderdetails=item.id %}" class="btn btn-outline-waring btn-sm">-</a>
                       {{item.quantity}}
                       <a href="{% url 'add_qty' id=item.id %}" class="btn btn-outline-waring btn-sm">+</a>
                     </td>
