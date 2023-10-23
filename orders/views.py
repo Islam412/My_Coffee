@@ -82,3 +82,7 @@ def sub_qty(request, id):
                 orderdetails.quantity -= 1
                 orderdetails.save()
     return redirect('cart')
+
+
+def payment(request):
+    return render(request,'orders/payment.html')
