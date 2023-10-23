@@ -22,7 +22,14 @@
 <form method="POST">
 {% endif %}
     {% csrf_token %}
-
+    Order Number: {{order.id}}
+    <hr>
+    Product Count: {{orderdetails.count}}
+    <hr>
+    Total Ammount: {{total}}
+    <hr>
+    <a href="{% url 'cart' %}" class="btn btn-secondary">Cart Details</a>
+    <hr>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputFirstName">Shipment Address</label>
@@ -47,7 +54,7 @@
             <input type="text" class="form-control" name="security_code" id="inputsecurity_code" placeholder="567" required value="{{security_code}}">
         </div>
     </div>
-    <button type="submit" name="btnpayment" class="btn btn-warning">Payment</button>
+    <button type="submit" name="btnpayment" class="btn btn-secondary">Payment</button>
 </form>
 {% endif %}
     </div>
