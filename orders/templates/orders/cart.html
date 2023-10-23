@@ -18,8 +18,8 @@
             Full name: {{order.user.first_name|add:' '|add:order.user.last_name}}
             Order Number: <span class="my-num">{{order.id}}</span> 
             with total: <span class="my-num">{{total}}$</span>
-            <a href="{% url 'products' %}" class="btn btn-warning">Continue Shopping</a>
-            <a href="{% url 'payment' %}" class="btn btn-warning">Checkout</a>
+            <a href="{% url 'payment' %}" class="btn btn-outline-secondary float-right m-1">Checkout</a>
+            <a href="{% url 'products' %}" class="btn btn-outline-secondary float-right m-1">Continue Shopping</a>
             <br><br>
           </h5>
           <table class="table table-hover">
